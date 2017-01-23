@@ -15,11 +15,14 @@
 #include <ti/drivers/I2C.h>
 #include <ti/drivers/PIN.h>
 // #include <ti/drivers/SPI.h>
-// #include <ti/drivers/UART.h>
+#include <ti/drivers/UART.h>
 // #include <ti/drivers/Watchdog.h>
 
 /* Board Header files */
 #include "Board.h"
+#include "HAL_BQ27441.h"
+
+
 
 #define TASKSTACKSIZE   512
 
@@ -29,6 +32,10 @@ Char task0Stack[TASKSTACKSIZE];
 /* Pin driver handle */
 static PIN_Handle ledPinHandle;
 static PIN_State ledPinState;
+
+static I2C_Handle i2cHandle;
+static I2C_Params i2cParams;
+I2C_Transaction i2cTransaction;
 
 /*
  * Application LED pin configuration table:
@@ -47,10 +54,36 @@ PIN_Config ledPinTable[] = {
  */
 Void heartBeatFxn(UArg arg0, UArg arg1)
 {
+    I2C_Transaction i2cTransaction;
+    const char echoPrompt[] = "\fEchoing characters:\r\n";
+        UART_Handle uart;
+        UART_Params uartParams;
+        UART_Params_init(&uartParams);
+            uartParams.writeDataMode = UART_DATA_BINARY;
+            uartParams.readDataMode = UART_DATA_BINARY;
+            uartParams.readReturnMode = UART_RETURN_FULL;
+            uartParams.readEcho = UART_ECHO_OFF;
+            uartParams.baudRate = 9600;
+            uart = UART_open(Board_UART0, &uartParams);
+            if (uart == NULL) {
+                    System_abort("Error opening the UART");
+                }
+            UART_write(uart, echoPrompt, sizeof(echoPrompt));
+
     while (1) {
         Task_sleep((UInt)arg0);
         PIN_setOutputValue(ledPinHandle, Board_LED0,
                            !PIN_getOutputValue(Board_LED0));
+
+        i2cTransaction.writeBuf = someWriteBuffer;
+        i2cTransaction.writeCount = numOfBytesToWrite;
+        i2cTransaction.readBuf = someReadBuffer;
+        i2cTransaction.readCount = numOfBytesToRead;
+        i2cTransaction.slaveAddress = some7BitI2CSlaveAddress;
+        ret = I2C_transfer(handle, &i2cTransaction);
+        if (!ret) {
+            System_printf("Unsuccessful I2C transfer");
+        }
     }
 }
 
@@ -63,10 +96,18 @@ int main(void)
 
     /* Call board init functions */
     Board_initGeneral();
-    // Board_initI2C();
+    Board_initI2C();
     // Board_initSPI();
-    // Board_initUART();
+    Board_initUART();
     // Board_initWatchdog();
+
+      I2C_init();
+      I2C_Params_init(&i2cParams);
+      i2cParams.bitRate = I2C_400kHz;
+      i2cHandle = I2C_open(Board_I2C, &i2cParams);
+      if (!handle) {
+          System_printf("I2C did not open");
+      }
 
     /* Construct heartBeat Task  thread */
     Task_Params_init(&taskParams);
@@ -80,6 +121,8 @@ int main(void)
     if(!ledPinHandle) {
         System_abort("Error initializing board LED pins\n");
     }
+
+
 
     PIN_setOutputValue(ledPinHandle, Board_LED1, 1);
 
