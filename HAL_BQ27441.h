@@ -2,8 +2,8 @@
 
 #include <stdbool.h>
 
-#ifndef __HAL_BQ27441_H_
-#define __HAL_BQ27441_H_
+//#ifndef __HAL_BQ27441_H_
+//#define __HAL_BQ27441_H_
 
 
 /*CONSTANTS*/
@@ -86,11 +86,11 @@
 //static int swapMSB_LSB(int data);
 
 /* Custom __delay_cycles() for non CCS Compiler */
-#if !defined(ccs)
-#undef __delay_cycles
-#define __delay_cycles(x)     SysCtlDelay(x)
-void SysCtlDelay(uint32_t);
-#endif
+//#if !defined(ccs)
+//#undef __delay_cycles
+//#define __delay_cycles(x)     SysCtlDelay(x)
+//void SysCtlDelay(uint32_t);
+//#endif
 
 
-#endif /* __HAL_BQ27441_H_ */
+//#endif /* __HAL_BQ27441_H_ */
