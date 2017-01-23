@@ -74,16 +74,16 @@
 
 
 /* Function Declarations */
-bool BQ27441_initConfig(void);
-bool BQ27441_initOpConfig(void);
-bool BQ27441_control(short subcommand, unsigned int timeout);
-bool BQ27441_controlRead(short subcommand, short *result, unsigned int timeout);
-bool BQ27441_command(short command, char data, unsigned int timeout);
-bool BQ27441_write16(short addr, short data, unsigned int timeout);
-bool BQ27441_read16(short stdcommand, short *result, unsigned int timeout);
-bool BQ27441_readChecksum(char *result, unsigned int timeout);
-static unsigned char computeCheckSum(unsigned char oldCheckSum, int oldData, int newData);
-static int swapMSB_LSB(int data);
+//bool BQ27441_initConfig(void);
+//bool BQ27441_initOpConfig(void);
+//bool BQ27441_control(short subcommand, unsigned int timeout);
+//bool BQ27441_controlRead(short subcommand, short *result, unsigned int timeout);
+//bool BQ27441_command(short command, char data, unsigned int timeout);
+//bool BQ27441_write16(short addr, short data, unsigned int timeout);
+//bool BQ27441_read16(short stdcommand, short *result, unsigned int timeout);
+//bool BQ27441_readChecksum(char *result, unsigned int timeout);
+//static unsigned char computeCheckSum(unsigned char oldCheckSum, int oldData, int newData);
+//static int swapMSB_LSB(int data);
 
 /* Custom __delay_cycles() for non CCS Compiler */
 #if !defined(ccs)
