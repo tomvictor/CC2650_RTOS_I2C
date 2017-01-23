@@ -43,8 +43,6 @@ UART_Handle uart;
 uint8_t rxBuffer[32];            // Receive buffer
 uint8_t txBuffer[32];            // Transmit buffer
 
-bool BQ27441_initConfig(void);
-bool BQ27441_read16(short stdcommand, short *result, unsigned int timeout);
 
 /*
  * Application LED pin configuration table:
@@ -80,20 +78,31 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
                 }
             UART_write(uart, echoPrompt, sizeof(echoPrompt));
 
+
+            I2C_Params_init(&i2cParams);
+                  i2cParams.bitRate = I2C_400kHz;
+                  i2cHandle = I2C_open(Board_I2C, &i2cParams);
+                  if (!i2cHandle) {
+                      System_printf("I2C did not open");
+                  }
+
+
     while (1) {
         Task_sleep((UInt)arg0);
         PIN_setOutputValue(ledPinHandle, Board_LED0,
                            !PIN_getOutputValue(Board_LED0));
 
-        i2cTransaction.writeBuf = txBuffer;
-        i2cTransaction.writeCount = sizeof(txBuffer);
-        i2cTransaction.readBuf = rxBuffer;
-        i2cTransaction.readCount = sizeof(rxBuffer);
-        i2cTransaction.slaveAddress = BQ27441_SLAVE_ADDRESS;
-        ret = I2C_transfer(i2cHandle, &i2cTransaction);
-        if (!ret) {
-            System_printf("Unsuccessful I2C transfer");
-        }
+
+
+//        i2cTransaction.writeBuf = txBuffer;
+//        i2cTransaction.writeCount = sizeof(txBuffer);
+//        i2cTransaction.readBuf = rxBuffer;
+//        i2cTransaction.readCount = sizeof(rxBuffer);
+//        i2cTransaction.slaveAddress = BQ27441_SLAVE_ADDRESS;
+//        ret = I2C_transfer(i2cHandle, &i2cTransaction);
+//        if (!ret) {
+//            System_printf("Unsuccessful I2C transfer");
+//        }
     }
 }
 
@@ -106,18 +115,12 @@ int main(void)
 
     /* Call board init functions */
     Board_initGeneral();
-    Board_initI2C();
     // Board_initSPI();
     Board_initUART();
     // Board_initWatchdog();
 
       I2C_init();
-      I2C_Params_init(&i2cParams);
-      i2cParams.bitRate = I2C_400kHz;
-      i2cHandle = I2C_open(Board_I2C, &i2cParams);
-      if (!i2cHandle) {
-          System_printf("I2C did not open");
-      }
+
 
     /* Construct heartBeat Task  thread */
     Task_Params_init(&taskParams);
@@ -147,14 +150,4 @@ int main(void)
     return (0);
 }
 
-
-/* Transmits String over UART */
-void UART_transmitString( char *pStr )
-{
-    while( *pStr )
-    {
-        UART_write(uart, *pStr, 1);
-        pStr++;
-    }
-}
 
