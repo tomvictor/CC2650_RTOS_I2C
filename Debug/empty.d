@@ -227,7 +227,6 @@ empty.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidriver
 empty.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h
 empty.obj: ../Board.h
 empty.obj: ../CC2650_LAUNCHXL.h
-empty.obj: ../HAL_BQ27441.h
 
 ../empty.c: 
 C:/ti/tirex-content/xdctools_3_32_00_06_core/packages/xdc/std.h: 
@@ -456,4 +455,3 @@ C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc
 C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h: 
 ../Board.h: 
 ../CC2650_LAUNCHXL.h: 
-../HAL_BQ27441.h: 

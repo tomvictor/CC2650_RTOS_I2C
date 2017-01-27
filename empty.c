@@ -21,7 +21,7 @@
 
 /* Board Header files */
 #include "Board.h"
-#include "HAL_BQ27441.h"
+
 
 
 
@@ -61,22 +61,20 @@ PIN_Config ledPinTable[] = {
  */
 Void heartBeatFxn(UArg arg0, UArg arg1)
 {
-    char ret;
-    I2C_Transaction i2cTransaction;
     const char echoPrompt[] = "\fEchoing characters:\r\n";
         UART_Handle uart;
         UART_Params uartParams;
         UART_Params_init(&uartParams);
-            uartParams.writeDataMode = UART_DATA_BINARY;
-            uartParams.readDataMode = UART_DATA_BINARY;
-            uartParams.readReturnMode = UART_RETURN_FULL;
-            uartParams.readEcho = UART_ECHO_OFF;
-            uartParams.baudRate = 9600;
-            uart = UART_open(Board_UART0, &uartParams);
+        uartParams.writeDataMode = UART_DATA_BINARY;
+        uartParams.readDataMode = UART_DATA_BINARY;
+        uartParams.readReturnMode = UART_RETURN_FULL;
+        uartParams.readEcho = UART_ECHO_OFF;
+        uartParams.baudRate = 9600;
+        uart = UART_open(Board_UART0, &uartParams);
             if (uart == NULL) {
                     System_abort("Error opening the UART");
                 }
-            UART_write(uart, echoPrompt, sizeof(echoPrompt));
+        UART_write(uart, echoPrompt, sizeof(echoPrompt));
 
 
             I2C_Params_init(&i2cParams);
@@ -92,17 +90,6 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
         PIN_setOutputValue(ledPinHandle, Board_LED0,
                            !PIN_getOutputValue(Board_LED0));
 
-
-
-//        i2cTransaction.writeBuf = txBuffer;
-//        i2cTransaction.writeCount = sizeof(txBuffer);
-//        i2cTransaction.readBuf = rxBuffer;
-//        i2cTransaction.readCount = sizeof(rxBuffer);
-//        i2cTransaction.slaveAddress = BQ27441_SLAVE_ADDRESS;
-//        ret = I2C_transfer(i2cHandle, &i2cTransaction);
-//        if (!ret) {
-//            System_printf("Unsuccessful I2C transfer");
-//        }
     }
 }
 
@@ -120,7 +107,6 @@ int main(void)
     // Board_initWatchdog();
 
       I2C_init();
-
 
     /* Construct heartBeat Task  thread */
     Task_Params_init(&taskParams);
