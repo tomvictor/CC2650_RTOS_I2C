@@ -187,8 +187,8 @@ CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/product
 CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/packages/ti/sysbios/knl/package/Clock_TimerProxy.h
 CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/driverlib/udma.h
 CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/inc/hw_udma.h
-CC2650_LAUNCHXL.obj: C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/Board.h
-CC2650_LAUNCHXL.obj: C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/CC2650_LAUNCHXL.h
+CC2650_LAUNCHXL.obj: C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/Board.h
+CC2650_LAUNCHXL.obj: C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/CC2650_LAUNCHXL.h
 CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/UART.h
 CC2650_LAUNCHXL.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h
 CC2650_LAUNCHXL.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/uart/UARTCC26XX.h
@@ -480,8 +480,8 @@ C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/pac
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/packages/ti/sysbios/knl/package/Clock_TimerProxy.h: 
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/driverlib/udma.h: 
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/inc/hw_udma.h: 
-C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/Board.h: 
-C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/CC2650_LAUNCHXL.h: 
+C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/Board.h: 
+C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/CC2650_LAUNCHXL.h: 
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/UART.h: 
 C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h: 
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/uart/UARTCC26XX.h: 

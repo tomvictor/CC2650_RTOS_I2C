@@ -10,6 +10,7 @@ GEN_OPTS__FLAG := --cmd_file="configPkg/compiler.opt"
 GEN_CMDS__FLAG := -l"configPkg/linker.cmd"
 
 ORDERED_OBJS += \
+"./Board.obj" \
 "./CC2650_LAUNCHXL.obj" \
 "./ccfg.obj" \
 "./empty.obj" \
@@ -123,33 +124,33 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-empty_CC2650_LAUNCHXL_TI.out \
+I2C_port_for_bq27441.out \
 
 EXE_OUTPUTS__QUOTED += \
-"empty_CC2650_LAUNCHXL_TI.out" \
+"I2C_port_for_bq27441.out" \
 
 BIN_OUTPUTS += \
-empty_CC2650_LAUNCHXL_TI.hex \
+I2C_port_for_bq27441.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"empty_CC2650_LAUNCHXL_TI.hex" \
+"I2C_port_for_bq27441.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "empty_CC2650_LAUNCHXL_TI.out"
+	@$(MAKE) --no-print-directory -Onone "I2C_port_for_bq27441.out"
 
 # Tool invocations
-empty_CC2650_LAUNCHXL_TI.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+I2C_port_for_bq27441.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi -z -m"empty_CC2650_LAUNCHXL_TI.map" --heap_size=0 --stack_size=256 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="empty_CC2650_LAUNCHXL_TI_linkInfo.xml" --rom_model -o "empty_CC2650_LAUNCHXL_TI.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/bin/armcl" -mv7M3 --code_state=16 --float_support=vfplib -me --define=ccs -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi -z -m"I2C_port_for_bq27441.map" --heap_size=0 --stack_size=256 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="I2C_port_for_bq27441_linkInfo.xml" --rom_model -o "I2C_port_for_bq27441.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-empty_CC2650_LAUNCHXL_TI.hex: $(EXE_OUTPUTS)
+I2C_port_for_bq27441.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/bin/armhex" --memwidth=8 --romwidth=8 --intel -o "empty_CC2650_LAUNCHXL_TI.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/bin/armhex" --memwidth=8 --romwidth=8 --intel -o "I2C_port_for_bq27441.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -157,8 +158,8 @@ empty_CC2650_LAUNCHXL_TI.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_CMDS__QUOTED)$(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "CC2650_LAUNCHXL.obj" "ccfg.obj" "empty.obj" 
-	-$(RM) "CC2650_LAUNCHXL.d" "ccfg.d" "empty.d" 
+	-$(RM) "Board.obj" "CC2650_LAUNCHXL.obj" "ccfg.obj" "empty.obj" 
+	-$(RM) "Board.d" "CC2650_LAUNCHXL.d" "ccfg.d" "empty.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

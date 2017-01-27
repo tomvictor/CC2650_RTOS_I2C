@@ -1,6 +1,6 @@
 #
 # This file was generated based on the configuration script:
-#     C:\Users\Tom\workspace_v7\empty_CC2650_LAUNCHXL_TI\empty.cfg
+#     C:\Users\Tom\workspace_v7\I2C_port_for_bq27441\empty.cfg
 #
 # This makefile may be included in other makefiles that need to build
 # the libraries containing the compiled source files generated as
@@ -14,7 +14,7 @@
 #
 # The absolute path to the generated source directory (at the time the
 # sources were generated) is:
-#    C:\Users\Tom\workspace_v7\empty_CC2650_LAUNCHXL_TI\src
+#    C:\Users\Tom\workspace_v7\I2C_port_for_bq27441\src
 #
 GEN_SRC_DIR ?= ../src
 

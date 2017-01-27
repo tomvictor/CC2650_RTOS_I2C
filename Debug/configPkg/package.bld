@@ -11,7 +11,7 @@ var makeAssembly = false;
 var Executable = xdc.module('xdc.bld.Executable');
 
 var exeOpts = new Executable.Attrs({
-        cfgScript: 'C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/empty.cfg',
+        cfgScript: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg',
         profile: 'release',
         cfgHome: 'configPkg',
 });
@@ -41,7 +41,7 @@ else {
 
 var thisObj = {
     cfg:        '../empty.cfg',
-    outputPath: 'C:/Users/Tom/workspace_v7/empty_CC2650_LAUNCHXL_TI/Debug/configPkg',
+    outputPath: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/Debug/configPkg',
     exeName:    'empty' + suffix,
     exeIntName: 'empty' + suffix.replace('.', '_'),
     targ:       targ,
