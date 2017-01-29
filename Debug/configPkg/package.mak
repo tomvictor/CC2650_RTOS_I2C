@@ -128,74 +128,74 @@ package/%.xdc.inc package/%_configPkg.c package/%.defs.h: %.xdc $(PKGCFGS)
 	@$(MSG) generating interfaces for package configPkg" (because $@ is older than $(firstword $?))" ...
 	$(XSRUN) -f xdc/services/intern/cmd/build.xs $(MK_IDLOPTS) -m package/package.xdc.dep -i package/package.xdc.inc package.xdc
 
-.dlls,em3 .dlls: empty.pem3
+.dlls,em3 .dlls: I2C_port_for_bq27441.pem3
 
--include package/cfg/empty_pem3.mak
--include package/cfg/empty_pem3.cfg.mak
+-include package/cfg/I2C_port_for_bq27441_pem3.mak
+-include package/cfg/I2C_port_for_bq27441_pem3.cfg.mak
 ifeq (,$(MK_NOGENDEPS))
--include package/cfg/empty_pem3.dep
+-include package/cfg/I2C_port_for_bq27441_pem3.dep
 endif
-empty.pem3: package/cfg/empty_pem3.xdl
+I2C_port_for_bq27441.pem3: package/cfg/I2C_port_for_bq27441_pem3.xdl
 	@
 
 
 ifeq (,$(wildcard .libraries,em3))
-empty.pem3 package/cfg/empty_pem3.c: .libraries,em3
+I2C_port_for_bq27441.pem3 package/cfg/I2C_port_for_bq27441_pem3.c: .libraries,em3
 endif
 
-package/cfg/empty_pem3.c package/cfg/empty_pem3.h package/cfg/empty_pem3.xdl: override _PROG_NAME := empty.xem3
-package/cfg/empty_pem3.c: package/cfg/empty_pem3.cfg
-package/cfg/empty_pem3.xdc.inc: package/cfg/empty_pem3.xdl
-package/cfg/empty_pem3.xdl package/cfg/empty_pem3.c: .interfaces
+package/cfg/I2C_port_for_bq27441_pem3.c package/cfg/I2C_port_for_bq27441_pem3.h package/cfg/I2C_port_for_bq27441_pem3.xdl: override _PROG_NAME := I2C_port_for_bq27441.xem3
+package/cfg/I2C_port_for_bq27441_pem3.c: package/cfg/I2C_port_for_bq27441_pem3.cfg
+package/cfg/I2C_port_for_bq27441_pem3.xdc.inc: package/cfg/I2C_port_for_bq27441_pem3.xdl
+package/cfg/I2C_port_for_bq27441_pem3.xdl package/cfg/I2C_port_for_bq27441_pem3.c: .interfaces
 
 clean:: clean,em3
-	-$(RM) package/cfg/empty_pem3.cfg
-	-$(RM) package/cfg/empty_pem3.dep
-	-$(RM) package/cfg/empty_pem3.c
-	-$(RM) package/cfg/empty_pem3.xdc.inc
+	-$(RM) package/cfg/I2C_port_for_bq27441_pem3.cfg
+	-$(RM) package/cfg/I2C_port_for_bq27441_pem3.dep
+	-$(RM) package/cfg/I2C_port_for_bq27441_pem3.c
+	-$(RM) package/cfg/I2C_port_for_bq27441_pem3.xdc.inc
 
 clean,em3::
-	-$(RM) empty.pem3
-.executables,em3 .executables: empty.xem3
+	-$(RM) I2C_port_for_bq27441.pem3
+.executables,em3 .executables: I2C_port_for_bq27441.xem3
 
-empty.xem3: |empty.pem3
+I2C_port_for_bq27441.xem3: |I2C_port_for_bq27441.pem3
 
--include package/cfg/empty.xem3.mak
-empty.xem3: package/cfg/empty_pem3.oem3 
+-include package/cfg/I2C_port_for_bq27441.xem3.mak
+I2C_port_for_bq27441.xem3: package/cfg/I2C_port_for_bq27441_pem3.oem3 
 	$(RM) $@
 	@$(MSG) lnkem3 $@ ...
 	$(RM) $(XDCCFGDIR)/$@.map
-	$(ti.targets.arm.elf.M3.rootDir)/bin/armcl -fs $(XDCCFGDIR)$(dir $@). -q -u _c_int00 --silicon_version=7M3 -z --strict_compatibility=on  -o $@ package/cfg/empty_pem3.oem3   package/cfg/empty_pem3.xdl  -w -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M3.rootDir)/lib/libc.a
+	$(ti.targets.arm.elf.M3.rootDir)/bin/armcl -fs $(XDCCFGDIR)$(dir $@). -q -u _c_int00 --silicon_version=7M3 -z --strict_compatibility=on  -o $@ package/cfg/I2C_port_for_bq27441_pem3.oem3   package/cfg/I2C_port_for_bq27441_pem3.xdl  -w -c -m $(XDCCFGDIR)/$@.map -l $(ti.targets.arm.elf.M3.rootDir)/lib/libc.a
 	
-empty.xem3: export C_DIR=
-empty.xem3: PATH:=$(ti.targets.arm.elf.M3.rootDir)/bin/;$(PATH)
-empty.xem3: Path:=$(ti.targets.arm.elf.M3.rootDir)/bin/;$(PATH)
+I2C_port_for_bq27441.xem3: export C_DIR=
+I2C_port_for_bq27441.xem3: PATH:=$(ti.targets.arm.elf.M3.rootDir)/bin/;$(PATH)
+I2C_port_for_bq27441.xem3: Path:=$(ti.targets.arm.elf.M3.rootDir)/bin/;$(PATH)
 
-empty.test test,em3 test: empty.xem3.test
+I2C_port_for_bq27441.test test,em3 test: I2C_port_for_bq27441.xem3.test
 
-empty.xem3.test:: empty.xem3
+I2C_port_for_bq27441.xem3.test:: I2C_port_for_bq27441.xem3
 ifeq (,$(_TESTLEVEL))
-	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 empty.xem3.test
+	@$(MAKE) -R -r --no-print-directory -f $(XDCROOT)/packages/xdc/bld/xdc.mak _TESTLEVEL=1 I2C_port_for_bq27441.xem3.test
 else
 	@$(MSG) running $<  ...
-	$(call EXEC.empty.xem3, ) 
+	$(call EXEC.I2C_port_for_bq27441.xem3, ) 
 endif
 
 clean,em3::
-	-$(RM) $(wildcard .tmp,empty.xem3,*)
+	-$(RM) $(wildcard .tmp,I2C_port_for_bq27441.xem3,*)
 
 
 clean:: clean,em3
 
 clean,em3::
-	-$(RM) empty.xem3
+	-$(RM) I2C_port_for_bq27441.xem3
 %,copy:
 	@$(if $<,,$(MSG) don\'t know how to build $*; exit 1)
 	@$(MSG) cp $< $@
 	$(RM) $@
 	$(CP) $< $@
-empty_pem3.oem3,copy : package/cfg/empty_pem3.oem3
-empty_pem3.sem3,copy : package/cfg/empty_pem3.sem3
+I2C_port_for_bq27441_pem3.oem3,copy : package/cfg/I2C_port_for_bq27441_pem3.oem3
+I2C_port_for_bq27441_pem3.sem3,copy : package/cfg/I2C_port_for_bq27441_pem3.sem3
 
 $(XDCCFGDIR)%.c $(XDCCFGDIR)%.h $(XDCCFGDIR)%.xdl: $(XDCCFGDIR)%.cfg $(XDCROOT)/packages/xdc/cfg/Main.xs | .interfaces
 	@$(MSG) "configuring $(_PROG_NAME) from $< ..."

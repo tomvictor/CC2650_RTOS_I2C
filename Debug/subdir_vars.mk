@@ -6,7 +6,7 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CFG_SRCS += \
-../empty.cfg 
+../I2C_port_for_bq27441.cfg 
 
 CMD_SRCS += \
 ../CC2650_LAUNCHXL.cmd 

@@ -4,18 +4,18 @@
     <units>
     </units>
     <sources>
-        <srcFile name="package/cfg/empty_pem3.c"/>
+        <srcFile name="package/cfg/I2C_port_for_bq27441_pem3.c"/>
     </sources>
     <configscripts>
-        <srcFile name="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg"/>
+        <srcFile name="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/I2C_port_for_bq27441.cfg"/>
     </configscripts>
     <makefiles>
         <srcFile name="package.mak" src="package.bld"/>
         <srcFile name="package/package.xdc.dep" src="package.xdc"/>
-        <srcFile name="package/cfg/empty_pem3.mak" src="package.bld"/>
-        <srcFile name="package/cfg/empty_pem3.oem3.dep" src="package/cfg/empty_pem3.c"/>
-        <srcFile name="package/cfg/empty_pem3.dep" src="package/cfg/empty_pem3.cfg"/>
-        <srcFile name="package/cfg/empty.xem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/I2C_port_for_bq27441_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/I2C_port_for_bq27441_pem3.oem3.dep" src="package/cfg/I2C_port_for_bq27441_pem3.c"/>
+        <srcFile name="package/cfg/I2C_port_for_bq27441_pem3.dep" src="package/cfg/I2C_port_for_bq27441_pem3.cfg"/>
+        <srcFile name="package/cfg/I2C_port_for_bq27441.xem3.mak" src="package.bld"/>
         <srcFile name="package/rel/configPkg.tar.dep" src="package/rel/configPkg.xdc.inc"/>
     </makefiles>
     <targets>
@@ -36,34 +36,34 @@
     <libraries>
     </libraries>
     <configurations>
-    <configuration name="empty"
-        pname="empty.pem3"
+    <configuration name="I2C_port_for_bq27441"
+        pname="I2C_port_for_bq27441.pem3"
         target="ti.targets.arm.elf.M3"
         platform="ti.platforms.simplelink:CC2650F128"
         profile="release"
         isPartial="false"
-        xCfgScript="package/cfg/empty_pem3.cfg"
-        xCfgPrefix="package/cfg/empty_pem3"
-        cfgScript="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg"
+        xCfgScript="package/cfg/I2C_port_for_bq27441_pem3.cfg"
+        xCfgPrefix="package/cfg/I2C_port_for_bq27441_pem3"
+        cfgScript="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/I2C_port_for_bq27441.cfg"
         cfgArgs="null"
         />
     </configurations>
     <executables>
-    <executable name="empty"
-        pname="empty.xem3"
+    <executable name="I2C_port_for_bq27441"
+        pname="I2C_port_for_bq27441.xem3"
         target="ti.targets.arm.elf.M3"
         platform="ti.platforms.simplelink:CC2650F128"
         profile="release"
-        xCfgScript="package/cfg/empty_pem3.cfg"
-        xCfgPrefix="package/cfg/empty_pem3"
-        cfgScript="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg"
+        xCfgScript="package/cfg/I2C_port_for_bq27441_pem3.cfg"
+        xCfgPrefix="package/cfg/I2C_port_for_bq27441_pem3"
+        cfgScript="C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/I2C_port_for_bq27441.cfg"
         cfgArgs="null"
         />
     </executables>
     <tests>
-    <test exeName="empty.xem3"
+    <test exeName="I2C_port_for_bq27441.xem3"
         args=""
-        groupName="empty.xem3"
+        groupName="I2C_port_for_bq27441.xem3"
         refOutput="undefined"
         refExitCode="0"
         execArgs=""

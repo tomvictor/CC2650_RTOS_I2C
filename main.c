@@ -8,6 +8,7 @@
 
 /* BIOS Header files */
 #include <ti/sysbios/BIOS.h>
+#include <ti/sysbios/knl/Semaphore.h>
 #include <ti/sysbios/knl/Clock.h>
 #include <ti/sysbios/knl/Task.h>
 
@@ -18,6 +19,9 @@
 // #include <ti/drivers/SPI.h>
 #include <ti/drivers/UART.h>
 // #include <ti/drivers/Watchdog.h>
+
+#include <driverlib/prcm.h>
+
 
 /* Board Header files */
 #include "Board.h"
@@ -36,7 +40,6 @@ static PIN_State ledPinState;
 
 UART_Handle uart;
 UART_Params uartParams;
-
 
 /*
  * Application LED pin configuration table:
@@ -91,7 +94,6 @@ int main(void)
     }
 
 
-
     PIN_setOutputValue(ledPinHandle, Board_LED1, 1);
 
     System_printf("Starting the example\nSystem provider is set to SysMin. "
@@ -109,16 +111,16 @@ int main(void)
 
 void uartini(void){
 
-    const char echoPrompt[] = "\fEchoing characters:\r\n";
+    const char echoPrompt[] = "Echoing characters:\n\r";
     UART_Params_init(&uartParams);
-        uartParams.writeDataMode = UART_DATA_BINARY;
-        uartParams.readDataMode = UART_DATA_BINARY;
-        uartParams.readReturnMode = UART_RETURN_FULL;
-        uartParams.readEcho = UART_ECHO_OFF;
-        uartParams.baudRate = 9600;
-        uart = UART_open(Board_UART0, &uartParams);
-        if (uart == NULL) {
-            System_abort("Error opening the UART");
-        }
-        UART_write(uart, echoPrompt, sizeof(echoPrompt));
+    uartParams.writeDataMode = UART_DATA_BINARY;
+    uartParams.readDataMode = UART_DATA_BINARY;
+    uartParams.readReturnMode = UART_RETURN_FULL;
+    uartParams.readEcho = UART_ECHO_OFF;
+    uartParams.baudRate = 9600;
+    uart = UART_open(Board_UART0, &uartParams);
+    if (uart == NULL) {
+        System_abort("Error opening the UART");
+    }
+    UART_write(uart, echoPrompt, sizeof(echoPrompt));
 }

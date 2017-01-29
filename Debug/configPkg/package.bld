@@ -11,7 +11,7 @@ var makeAssembly = false;
 var Executable = xdc.module('xdc.bld.Executable');
 
 var exeOpts = new Executable.Attrs({
-        cfgScript: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg',
+        cfgScript: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/I2C_port_for_bq27441.cfg',
         profile: 'release',
         cfgHome: 'configPkg',
 });
@@ -20,7 +20,7 @@ exeOpts.cfgArgs = 'null';
 exeOpts.cfgArgsEncoded = true;
 
 var exe = Pkg[makeAssembly ? 'addAssembly': 'addExecutable'](
-    'empty',
+    'I2C_port_for_bq27441',
     targ,
     platform,
     exeOpts
@@ -40,10 +40,10 @@ else {
 }
 
 var thisObj = {
-    cfg:        '../empty.cfg',
+    cfg:        '../I2C_port_for_bq27441.cfg',
     outputPath: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/Debug/configPkg',
-    exeName:    'empty' + suffix,
-    exeIntName: 'empty' + suffix.replace('.', '_'),
+    exeName:    'I2C_port_for_bq27441' + suffix,
+    exeIntName: 'I2C_port_for_bq27441' + suffix.replace('.', '_'),
     targ:       targ,
     linkerCommandFile: 'linker.cmd',
     compilerOptFile: 'compiler.opt',

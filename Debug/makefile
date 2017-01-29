@@ -13,9 +13,8 @@ ORDERED_OBJS += \
 "./ccfg.obj" \
 "./main.obj" \
 "./board/CC2650_LAUNCHXL.obj" \
-"./board/Interfaces/bsp_i2c.obj" \
-"./board/Interfaces/bsp_spi.obj" \
-"./board/Interfaces/sensor.obj" \
+"./board/bsp_i2c.obj" \
+"./board/sensor.obj" \
 "../CC2650_LAUNCHXL.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/driverlib/bin/ccs/driverlib.lib" \
@@ -30,10 +29,8 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include board/subdir_vars.mk
--include board/Interfaces/subdir_vars.mk
 -include subdir_rules.mk
 -include board/subdir_rules.mk
--include board/Interfaces/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -164,8 +161,8 @@ I2C_port_for_bq27441.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_CMDS__QUOTED)$(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "ccfg.obj" "main.obj" "board\CC2650_LAUNCHXL.obj" "board\Interfaces\bsp_i2c.obj" "board\Interfaces\bsp_spi.obj" "board\Interfaces\sensor.obj" 
-	-$(RM) "ccfg.d" "main.d" "board\CC2650_LAUNCHXL.d" "board\Interfaces\bsp_i2c.d" "board\Interfaces\bsp_spi.d" "board\Interfaces\sensor.d" 
+	-$(RM) "ccfg.obj" "main.obj" "board\CC2650_LAUNCHXL.obj" "board\bsp_i2c.obj" "board\sensor.obj" 
+	-$(RM) "ccfg.d" "main.d" "board\CC2650_LAUNCHXL.d" "board\bsp_i2c.d" "board\sensor.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
