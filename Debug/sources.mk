@@ -125,6 +125,5 @@ GEN_OPTS__QUOTED :=
 SUBDIRS := \
 . \
 board \
-board/Devices \
 board/Interfaces \
 

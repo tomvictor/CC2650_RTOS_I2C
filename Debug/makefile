@@ -13,12 +13,6 @@ ORDERED_OBJS += \
 "./ccfg.obj" \
 "./main.obj" \
 "./board/CC2650_LAUNCHXL.obj" \
-"./board/Devices/ext_flash.obj" \
-"./board/Devices/sensor_bmp280.obj" \
-"./board/Devices/sensor_hdc1000.obj" \
-"./board/Devices/sensor_mpu9250.obj" \
-"./board/Devices/sensor_opt3001.obj" \
-"./board/Devices/sensor_tmp007.obj" \
 "./board/Interfaces/bsp_i2c.obj" \
 "./board/Interfaces/bsp_spi.obj" \
 "./board/Interfaces/sensor.obj" \
@@ -36,11 +30,9 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include board/subdir_vars.mk
--include board/Devices/subdir_vars.mk
 -include board/Interfaces/subdir_vars.mk
 -include subdir_rules.mk
 -include board/subdir_rules.mk
--include board/Devices/subdir_rules.mk
 -include board/Interfaces/subdir_rules.mk
 -include objects.mk
 
@@ -172,8 +164,8 @@ I2C_port_for_bq27441.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_CMDS__QUOTED)$(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "ccfg.obj" "main.obj" "board\CC2650_LAUNCHXL.obj" "board\Devices\ext_flash.obj" "board\Devices\sensor_bmp280.obj" "board\Devices\sensor_hdc1000.obj" "board\Devices\sensor_mpu9250.obj" "board\Devices\sensor_opt3001.obj" "board\Devices\sensor_tmp007.obj" "board\Interfaces\bsp_i2c.obj" "board\Interfaces\bsp_spi.obj" "board\Interfaces\sensor.obj" 
-	-$(RM) "ccfg.d" "main.d" "board\CC2650_LAUNCHXL.d" "board\Devices\ext_flash.d" "board\Devices\sensor_bmp280.d" "board\Devices\sensor_hdc1000.d" "board\Devices\sensor_mpu9250.d" "board\Devices\sensor_opt3001.d" "board\Devices\sensor_tmp007.d" "board\Interfaces\bsp_i2c.d" "board\Interfaces\bsp_spi.d" "board\Interfaces\sensor.d" 
+	-$(RM) "ccfg.obj" "main.obj" "board\CC2650_LAUNCHXL.obj" "board\Interfaces\bsp_i2c.obj" "board\Interfaces\bsp_spi.obj" "board\Interfaces\sensor.obj" 
+	-$(RM) "ccfg.d" "main.d" "board\CC2650_LAUNCHXL.d" "board\Interfaces\bsp_i2c.d" "board\Interfaces\bsp_spi.d" "board\Interfaces\sensor.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

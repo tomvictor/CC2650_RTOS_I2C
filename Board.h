@@ -9,7 +9,7 @@ extern "C" {
 
 #include <ti/drivers/Power.h>
 
-#include "CC2650_LAUNCHXL.h"
+#include "board/CC2650_LAUNCHXL.h"
 
 /* These #defines allow us to reuse TI-RTOS across other device families */
 #define     Board_LED0              Board_RLED
