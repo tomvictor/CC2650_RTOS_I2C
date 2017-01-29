@@ -34,14 +34,7 @@ Char task0Stack[TASKSTACKSIZE];
 static PIN_Handle ledPinHandle;
 static PIN_State ledPinState;
 
-static I2C_Handle i2cHandle;
-static I2C_Params i2cParams;
-I2C_Transaction i2cTransaction;
-
 UART_Handle uart;
-
-uint8_t rxBuffer[32];            // Receive buffer
-uint8_t txBuffer[32];            // Transmit buffer
 
 
 /*
@@ -77,13 +70,6 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
         UART_write(uart, echoPrompt, sizeof(echoPrompt));
 
 
-            I2C_Params_init(&i2cParams);
-                  i2cParams.bitRate = I2C_400kHz;
-                  i2cHandle = I2C_open(Board_I2C, &i2cParams);
-                  if (!i2cHandle) {
-                      System_printf("I2C did not open");
-                  }
-
 
     while (1) {
         Task_sleep((UInt)arg0);
@@ -98,6 +84,8 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
  */
 int main(void)
 {
+    PIN_init(CustomBoardGpioInitTable);
+
     Task_Params taskParams;
 
     /* Call board init functions */
@@ -106,7 +94,6 @@ int main(void)
     Board_initUART();
     // Board_initWatchdog();
 
-    I2C_init();
 
     /* Construct heartBeat Task  thread */
     Task_Params_init(&taskParams);
