@@ -11,7 +11,7 @@ var makeAssembly = false;
 var Executable = xdc.module('xdc.bld.Executable');
 
 var exeOpts = new Executable.Attrs({
-        cfgScript: 'C:/Users/Tom/workspace_v7/CC2650_RTOS_I2C/empty.cfg',
+        cfgScript: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg',
         profile: 'release',
         cfgHome: 'xconfig_empty',
 });
@@ -40,8 +40,8 @@ else {
 }
 
 var thisObj = {
-    cfg:        'C:/Users/Tom/workspace_v7/CC2650_RTOS_I2C/empty.cfg',
-    outputPath: 'C:/Users/Tom/workspace_v7/CC2650_RTOS_I2C/.config/xconfig_empty',
+    cfg:        'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/empty.cfg',
+    outputPath: 'C:/Users/Tom/workspace_v7/I2C_port_for_bq27441/.config/xconfig_empty',
     exeName:    'empty' + suffix,
     exeIntName: 'empty' + suffix.replace('.', '_'),
     targ:       targ,

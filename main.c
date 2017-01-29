@@ -106,7 +106,7 @@ int main(void)
     Board_initUART();
     // Board_initWatchdog();
 
-      I2C_init();
+    I2C_init();
 
     /* Construct heartBeat Task  thread */
     Task_Params_init(&taskParams);
