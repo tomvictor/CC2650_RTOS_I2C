@@ -35,6 +35,7 @@ static PIN_Handle ledPinHandle;
 static PIN_State ledPinState;
 
 UART_Handle uart;
+UART_Params uartParams;
 
 
 /*
@@ -42,11 +43,11 @@ UART_Handle uart;
  *   - All LEDs board LEDs are off.
  */
 PIN_Config ledPinTable[] = {
-    Board_LED0 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    Board_LED1 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
-    PIN_TERMINATE
+                            Board_LED0 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
+                            Board_LED1 | PIN_GPIO_OUTPUT_EN | PIN_GPIO_LOW | PIN_PUSHPULL | PIN_DRVSTR_MAX,
+                            PIN_TERMINATE
 };
-
+static void uartini(void);
 /*
  *  ======== heartBeatFxn ========
  *  Toggle the Board_LED0. The Task_sleep is determined by arg0 which
@@ -54,22 +55,8 @@ PIN_Config ledPinTable[] = {
  */
 Void heartBeatFxn(UArg arg0, UArg arg1)
 {
-    const char echoPrompt[] = "\fEchoing characters:\r\n";
-        UART_Handle uart;
-        UART_Params uartParams;
-        UART_Params_init(&uartParams);
-        uartParams.writeDataMode = UART_DATA_BINARY;
-        uartParams.readDataMode = UART_DATA_BINARY;
-        uartParams.readReturnMode = UART_RETURN_FULL;
-        uartParams.readEcho = UART_ECHO_OFF;
-        uartParams.baudRate = 9600;
-        uart = UART_open(Board_UART0, &uartParams);
-            if (uart == NULL) {
-                    System_abort("Error opening the UART");
-                }
-        UART_write(uart, echoPrompt, sizeof(echoPrompt));
-
-
+    bspI2cInit();
+    uartini();
 
     while (1) {
         Task_sleep((UInt)arg0);
@@ -84,15 +71,10 @@ Void heartBeatFxn(UArg arg0, UArg arg1)
  */
 int main(void)
 {
-    PIN_init(CustomBoardGpioInitTable);
-
+    Board_initGeneral();
     Task_Params taskParams;
 
-    /* Call board init functions */
-    Board_initGeneral();
-    // Board_initSPI();
     Board_initUART();
-    // Board_initWatchdog();
 
 
     /* Construct heartBeat Task  thread */
@@ -113,7 +95,7 @@ int main(void)
     PIN_setOutputValue(ledPinHandle, Board_LED1, 1);
 
     System_printf("Starting the example\nSystem provider is set to SysMin. "
-                  "Halt the target to view any SysMin contents in ROV.\n");
+            "Halt the target to view any SysMin contents in ROV.\n");
     /* SysMin will only print to the console when you call flush or exit */
     System_flush();
 
@@ -123,4 +105,20 @@ int main(void)
     return (0);
 }
 
+/*custom uart init function*/
 
+void uartini(void){
+
+    const char echoPrompt[] = "\fEchoing characters:\r\n";
+    UART_Params_init(&uartParams);
+        uartParams.writeDataMode = UART_DATA_BINARY;
+        uartParams.readDataMode = UART_DATA_BINARY;
+        uartParams.readReturnMode = UART_RETURN_FULL;
+        uartParams.readEcho = UART_ECHO_OFF;
+        uartParams.baudRate = 9600;
+        uart = UART_open(Board_UART0, &uartParams);
+        if (uart == NULL) {
+            System_abort("Error opening the UART");
+        }
+        UART_write(uart, echoPrompt, sizeof(echoPrompt));
+}

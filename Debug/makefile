@@ -10,9 +10,18 @@ GEN_OPTS__FLAG := --cmd_file="configPkg/compiler.opt"
 GEN_CMDS__FLAG := -l"configPkg/linker.cmd"
 
 ORDERED_OBJS += \
-"./CC2650_LAUNCHXL.obj" \
 "./ccfg.obj" \
-"./empty.obj" \
+"./main.obj" \
+"./board/CC2650_LAUNCHXL.obj" \
+"./board/Devices/ext_flash.obj" \
+"./board/Devices/sensor_bmp280.obj" \
+"./board/Devices/sensor_hdc1000.obj" \
+"./board/Devices/sensor_mpu9250.obj" \
+"./board/Devices/sensor_opt3001.obj" \
+"./board/Devices/sensor_tmp007.obj" \
+"./board/Interfaces/bsp_i2c.obj" \
+"./board/Interfaces/bsp_spi.obj" \
+"./board/Interfaces/sensor.obj" \
 "../CC2650_LAUNCHXL.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/cc26xxware_2_24_03_17272/driverlib/bin/ccs/driverlib.lib" \
@@ -26,7 +35,13 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include board/subdir_vars.mk
+-include board/Devices/subdir_vars.mk
+-include board/Interfaces/subdir_vars.mk
 -include subdir_rules.mk
+-include board/subdir_rules.mk
+-include board/Devices/subdir_rules.mk
+-include board/Interfaces/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -157,8 +172,8 @@ I2C_port_for_bq27441.hex: $(EXE_OUTPUTS)
 clean:
 	-$(RM) $(GEN_CMDS__QUOTED)$(GEN_MISC_FILES__QUOTED)$(BIN_OUTPUTS__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)$(GEN_OPTS__QUOTED)
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
-	-$(RM) "CC2650_LAUNCHXL.obj" "ccfg.obj" "empty.obj" 
-	-$(RM) "CC2650_LAUNCHXL.d" "ccfg.d" "empty.d" 
+	-$(RM) "ccfg.obj" "main.obj" "board\CC2650_LAUNCHXL.obj" "board\Devices\ext_flash.obj" "board\Devices\sensor_bmp280.obj" "board\Devices\sensor_hdc1000.obj" "board\Devices\sensor_mpu9250.obj" "board\Devices\sensor_opt3001.obj" "board\Devices\sensor_tmp007.obj" "board\Interfaces\bsp_i2c.obj" "board\Interfaces\bsp_spi.obj" "board\Interfaces\sensor.obj" 
+	-$(RM) "ccfg.d" "main.d" "board\CC2650_LAUNCHXL.d" "board\Devices\ext_flash.d" "board\Devices\sensor_bmp280.d" "board\Devices\sensor_hdc1000.d" "board\Devices\sensor_mpu9250.d" "board\Devices\sensor_opt3001.d" "board\Devices\sensor_tmp007.d" "board\Interfaces\bsp_i2c.d" "board\Interfaces\bsp_spi.d" "board\Interfaces\sensor.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -12,9 +12,8 @@ CMD_SRCS += \
 ../CC2650_LAUNCHXL.cmd 
 
 C_SRCS += \
-../CC2650_LAUNCHXL.c \
 ../ccfg.c \
-../empty.c 
+../main.c 
 
 GEN_CMDS += \
 ./configPkg/linker.cmd 
@@ -27,38 +26,33 @@ GEN_MISC_DIRS += \
 ./configPkg/ 
 
 C_DEPS += \
-./CC2650_LAUNCHXL.d \
 ./ccfg.d \
-./empty.d 
+./main.d 
 
 GEN_OPTS += \
 ./configPkg/compiler.opt 
 
 OBJS += \
-./CC2650_LAUNCHXL.obj \
 ./ccfg.obj \
-./empty.obj 
+./main.obj 
 
 GEN_MISC_DIRS__QUOTED += \
 "configPkg\" 
 
 OBJS__QUOTED += \
-"CC2650_LAUNCHXL.obj" \
 "ccfg.obj" \
-"empty.obj" 
+"main.obj" 
 
 C_DEPS__QUOTED += \
-"CC2650_LAUNCHXL.d" \
 "ccfg.d" \
-"empty.d" 
+"main.d" 
 
 GEN_FILES__QUOTED += \
 "configPkg\linker.cmd" \
 "configPkg\compiler.opt" 
 
 C_SRCS__QUOTED += \
-"../CC2650_LAUNCHXL.c" \
 "../ccfg.c" \
-"../empty.c" 
+"../main.c" 
 
 
