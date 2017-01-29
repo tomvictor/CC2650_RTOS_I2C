@@ -129,6 +129,7 @@ bool sensorWriteReg(uint8_t addr, uint8_t *pBuf, uint8_t nBytes)
  *
  * @return  bit-mask of passed flags, one bit set for each sensor
  */
+/*
 uint8_t sensorTestExecute(uint8_t testMap)
 {
   selfTestResult = 0;
@@ -205,6 +206,7 @@ uint8_t sensorTestExecute(uint8_t testMap)
 
   return selfTestResult;
 }
+*/
 
 /*******************************************************************************
  * @fn      sensorTestResult
