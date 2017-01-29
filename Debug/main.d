@@ -226,6 +226,7 @@ main.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46
 main.obj: C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/UART.h
 main.obj: C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h
 main.obj: ../Board.h
+main.obj: ../board/CC2650_LAUNCHXL.h
 
 ../main.c: 
 C:/ti/tirex-content/xdctools_3_32_00_06_core/packages/xdc/std.h: 
@@ -453,3 +454,4 @@ C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/bios_6_46_01_37/pac
 C:/ti/tirex-content/tirtos_cc13xx_cc26xx_2_21_00_06/products/tidrivers_cc13xx_cc26xx_2_21_00_04/packages/ti/drivers/UART.h: 
 C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.0.LTS/include/stddef.h: 
 ../Board.h: 
+../board/CC2650_LAUNCHXL.h: 

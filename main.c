@@ -55,7 +55,7 @@ static void uartini(void);
  */
 Void heartBeatFxn(UArg arg0, UArg arg1)
 {
-    bspI2cInit();
+    //bspI2cInit();
     uartini();
 
     while (1) {

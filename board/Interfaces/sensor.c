@@ -49,6 +49,7 @@ this project specific
 #include "sensor.h"
 #include "bsp_i2c.h"
 
+/*
 #include "ext_flash.h"
 #include "sensor_tmp007.h"
 #if defined(CC2650ST_0120)
@@ -60,6 +61,7 @@ this project specific
 #include "sensor_bmp280.h"
 #include "sensor_opt3001.h"
 #include "sensor_mpu9250.h"
+*/
 
 /* -----------------------------------------------------------------------------
 *                                           Macros and constants
